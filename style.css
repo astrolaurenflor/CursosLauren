@@ -1,11 +1,33 @@
 /* @import url("fontawesome-all.min.css"); replaced by CDN in HTML */
-@import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic|Source+Code+Pro:400");
+@import url("https://fonts.googleapis.com/css?family=LastName:400,400italic,700,700italic|Source+Code+Pro:400");
 
 /*
 	Read Only by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+
+/* Custom Font: Frogie */
+@font-face {
+    font-family: 'Frogie';
+    src: url('fonts/Frogie.ttf') format('truetype');
+    /* Placeholder path */
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #5B2D8B;
+    /* Deep Purple */
+    --accent-color: #7A4EB2;
+    /* Soft Purple */
+    --bg-color: #F6F4FA;
+    /* Light Background */
+    --text-color: #1F1F1F;
+    /* Dark Text */
+    --font-heading: 'Frogie', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+}
 
 html,
 body,
@@ -173,7 +195,7 @@ html {
 }
 
 body {
-    background: #fff;
+    background: var(--bg-color);
 }
 
 body.is-preload *,
@@ -193,8 +215,8 @@ body,
 input,
 select,
 textarea {
-    color: #888;
-    font-family: "Lato", sans-serif;
+    color: var(--text-color);
+    font-family: var(--font-body);
     font-size: 16pt;
     font-weight: 400;
     line-height: 1.75em;
@@ -206,18 +228,18 @@ a {
     -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     border-bottom: solid 1px #e4e4e4;
-    color: inherit;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 a:hover {
     border-bottom-color: transparent;
-    color: #00008b !important;
+    color: var(--accent-color) !important;
 }
 
 strong,
 b {
-    color: #777;
+    color: var(--primary-color);
     font-weight: 700;
 }
 
@@ -236,7 +258,8 @@ h3,
 h4,
 h5,
 h6 {
-    color: #777;
+    color: var(--primary-color);
+    font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1em;
     margin: 0 0 0.5625em 0;
@@ -1893,12 +1916,12 @@ header h6+p {
 }
 
 header.major h2 {
-    color: #64b7ed;
+    color: var(--primary-color);
     font-size: 3.5em;
 }
 
 header.major h2+p {
-    color: #777;
+    color: var(--text-color);
     font-size: 1.75em;
     font-weight: 700;
     margin-top: -0.75em;
@@ -1956,7 +1979,7 @@ input[type="password"]:focus,
 input[type="email"]:focus,
 select:focus,
 textarea:focus {
-    border-color: #64b7ed;
+    border-color: var(--accent-color);
 }
 
 select {
@@ -2061,7 +2084,7 @@ input[type="radio"]:checked+label:before {
 
 input[type="checkbox"]:focus+label:before,
 input[type="radio"]:focus+label:before {
-    border-color: #64b7ed;
+    border-color: var(--accent-color);
 }
 
 input[type="checkbox"]+label:before {
@@ -2726,7 +2749,7 @@ input[type="submit"].primary,
 input[type="reset"].primary,
 input[type="button"].primary,
 .button.primary {
-    background-color: #64b7ed;
+    background-color: var(--primary-color);
     color: #ffffff !important;
 }
 
@@ -2734,14 +2757,14 @@ input[type="submit"].primary:hover,
 input[type="reset"].primary:hover,
 input[type="button"].primary:hover,
 .button.primary:hover {
-    background-color: #5ed0b1;
+    background-color: var(--accent-color);
 }
 
 input[type="submit"].primary:active,
 input[type="reset"].primary:active,
 input[type="button"].primary:active,
 .button.primary:active {
-    background-color: #39c29d;
+    background-color: var(--accent-color);
 }
 
 input[type="submit"].disabled,
@@ -2809,8 +2832,8 @@ input[type="button"]:disabled,
     -webkit-justify-content: space-between;
     -ms-justify-content: space-between;
     justify-content: space-between;
-    background: #64b7ed;
-    color: #d2f2e9;
+    background: var(--primary-color);
+    color: #ffffff;
     height: 100%;
     overflow-y: auto;
     position: fixed;
@@ -2839,11 +2862,11 @@ input[type="button"]:disabled,
 }
 
 #header header p {
-    color: #b7eadc;
+    color: #e0e0e0;
 }
 
 #header a {
-    color: #d2f2e9;
+    color: #e0e0e0;
 }
 
 #header a:hover {
@@ -2870,7 +2893,7 @@ input[type="button"]:disabled,
 }
 
 #header>header p {
-    color: #d2f2e9;
+    color: #e0e0e0;
     font-style: italic;
     margin: 1em 0 0 0;
 }
@@ -2891,7 +2914,7 @@ input[type="button"]:disabled,
 }
 
 #header>footer .icons li a {
-    color: #b7eadc;
+    color: #e0e0e0;
 }
 
 #header>nav {
@@ -2908,7 +2931,7 @@ input[type="button"]:disabled,
 }
 
 #header>nav ul li {
-    border-top: solid 2px #5ccfb1;
+    border-top: solid 2px rgba(255, 255, 255, 0.1);
     display: block;
     padding: 0;
 }
@@ -2927,7 +2950,7 @@ input[type="button"]:disabled,
 
 #header>nav ul li a.active {
     background: #fff;
-    color: #b7eadc !important;
+    color: var(--primary-color) !important;
 }
 
 #header>nav ul li:first-child {
