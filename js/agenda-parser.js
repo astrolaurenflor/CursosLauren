@@ -156,6 +156,63 @@ document.addEventListener('DOMContentLoaded', function () {
                     agendaBody.appendChild(tr);
                 }
             });
+
+            // --- Evaluation Section Automation ---
+            const evalBody = document.getElementById('evaluacion-body');
+            if (evalBody) {
+                // Find exams
+                let examen1Date = "[Pendiente]";
+                let examen2Date = "[Pendiente]";
+
+                rows.forEach(row => {
+                    // Check "Temas / Actividad" (Col 3) or "Tipo de sesión" (Col 2)
+                    // The CSV output for Exam 1:
+                    // ,26/03,Examen 1,,,
+                    // So "Tipo de sesión" is "Examen 1". Or maybe "Temas" is?
+                    // Let's check CSV structure for Exam 1 line.
+                    // Row 15 or so: 
+                    // ,26/03,Examen 1,,,
+                    // Col 0: empty
+                    // Col 1: 26/03 (Fecha)
+                    // Col 2: Examen 1 (Tipo?)
+                    // Col 3: empty
+                    //
+                    // Wait, CSV structure:
+                    // Semana,Fecha,Tipo de sesión,Temas / Actividad,Publicación de la Práctica,Entrega del informe
+                    //
+                    // Check Step 1317 output:
+                    // ,26/03,Examen 1,,,
+                    // So Col 2 is "Examen 1".
+
+                    const tipo = row[2] ? row[2].toLowerCase() : '';
+                    const tema = row[3] ? row[3].toLowerCase() : '';
+
+                    if (tipo.includes('examen 1') || tema.includes('examen 1')) {
+                        examen1Date = row[1];
+                    }
+                    if (tipo.includes('examen 2') || tema.includes('examen 2')) {
+                        examen2Date = row[1];
+                    }
+                });
+
+                evalBody.innerHTML = `
+                    <tr>
+                        <td>Examen Parcial 1</td>
+                        <td>20%</td>
+                        <td>${examen1Date}</td>
+                    </tr>
+                    <tr>
+                        <td>Examen Final</td>
+                        <td>20%</td>
+                        <td>${examen2Date}</td>
+                    </tr>
+                    <tr>
+                        <td>Informes</td>
+                        <td>60%</td>
+                        <td>-</td>
+                    </tr>
+                `;
+            }
         })
         .catch(error => console.error('Error loading agenda:', error));
 
